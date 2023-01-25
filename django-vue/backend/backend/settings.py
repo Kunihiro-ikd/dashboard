@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # app
     # 'django_plotly_dash.apps.DjangoPlotlyDashConfig',
-    # 'app',
+
 ]
 
 MIDDLEWARE = [

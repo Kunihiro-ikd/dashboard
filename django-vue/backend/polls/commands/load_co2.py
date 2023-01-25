@@ -14,16 +14,18 @@ class Command(BaseCommand):
         datafile,
         '\n----')
         datafile = settings.BASE_DIR / 'backend' / 'data' /'co2_mm_mlo.csv'
+        print(datafile)
 
         with open(datafile, 'r') as csvfile:
             reader = csv.DictReader(islice(csvfile, 51, None))
             
             for row in reader:
                 dt = date(
-                    year=row["year"],
-                    month=row['month'],
-                    day=1
+                    year  = int(row["year"]),
+                    month = int(row['month']),
+                    day   = 1
                 )
+                print('load_co2', row)
                 CO2.objects.get_or_create(date=dt, average=row['average'])
-                 
+
 

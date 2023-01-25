@@ -66,12 +66,11 @@ def dashboard_japanese_salary(request):
     print('----------')
 
     co2 = CO2.objects.all()
-    print(co2, '\n------')
     if start:
         co2 = co2.filter(date__gte=start)
     if end:
         co2 = co2.filter(date__lte=end)
-
+    print('views.py ---- make px.line')
     fig = px.line(
         x=[c.date for c in co2],
         y=[c.average for c in co2],
