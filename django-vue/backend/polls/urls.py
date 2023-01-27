@@ -12,5 +12,9 @@ urlpatterns = [
     path('<int:question_id>/results/', views.results, name='results'),
     # ex: /polls/5/vote/
     path('<int:question_id>/vote/', views.vote, name='vote'),
-    path('dashboard_japanese_salary/',  views.dashboard_japanese_salary, name='dashboard_japanese_salary'),
+    path('demo/',  views.demo, name='demo'),
+    path('japanese_salary/',  views.japanese_salary, name='japanese_salary'),
+    # dashboard_japanese_salary.html で開いた方がよさそう
+    path('bar/',  views.yearly_avg_co2, name='bar-test'),
+    # 'bar= url のパス, views.関数, name=わかりやすい名前（パスを変えた時でもhtml 側で {% url 'name'%}を取ることができる）
 ]

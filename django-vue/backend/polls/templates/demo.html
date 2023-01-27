@@ -34,9 +34,15 @@
   <h2>dashboard japanese dashboard</h2>
 
   {% block content %}
-  <div class="title"><h1>Plotlyのグラフを描画</h1></div>
-  <div class="graph">{{plot|safe}}</div>
+
+
+  <form method="GET" action="{% url 'polls:demo' %}">
+    {{ form.as_p }}
+    dashboard_japanese_salary.html
+    <button>Submit </button>
+  </form>
   
+  <div class="graph">{{plot|safe}}</div>
   {{chart | safe}}
   
   {% endblock %}
