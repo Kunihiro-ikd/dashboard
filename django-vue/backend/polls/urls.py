@@ -1,6 +1,7 @@
 from django.urls import path
-
 from . import views
+from django.conf.urls import include
+# from polls.dash_apps.finished_apps import testplot
 
 app_name = "polls"
 urlpatterns = [
@@ -13,8 +14,8 @@ urlpatterns = [
     # ex: /polls/5/vote/
     path('<int:question_id>/vote/', views.vote, name='vote'),
     path('demo/',  views.demo, name='demo'),
-    path('japanese_salary/',  views.japanese_salary, name='japanese_salary'),
-    # dashboard_japanese_salary.html で開いた方がよさそう
+    path('japanese_salary/', views.japanese_salary, name='japanese_salary'),
+    # path('japanese_salary/', include('django_plotly_dash.urls')),
     path('bar/',  views.yearly_avg_co2, name='bar-test'),
     # 'bar= url のパス, views.関数, name=わかりやすい名前（パスを変えた時でもhtml 側で {% url 'name'%}を取ることができる）
 ]

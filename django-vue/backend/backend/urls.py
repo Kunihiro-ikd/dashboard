@@ -18,9 +18,12 @@ from django.urls import include, path
 from polls import views
 from django.conf import settings
 from django.conf.urls.static import static
+from polls.dash_apps.finished_apps import testplot, simpleexample
 
 
 urlpatterns = [
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
+    # なぜかdjango_plotly_dashのパスは必要 https://github.com/GibbsConsulting/django-plotly-dash/issues/117
+    path('^django_plotly_dash/', include('django_plotly_dash.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
