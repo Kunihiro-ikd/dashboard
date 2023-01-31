@@ -28,6 +28,3 @@ class CO2(models.Model):
 
     class Meta:
         ordering = ('date',)
-
-# class JapaneseSalary(model.Model):
-#     japanese = models.

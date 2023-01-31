@@ -114,9 +114,30 @@ app.layout = html.Div([
                 },
             ))),
     # TODO Slider の実装
+    html.Div(
+        html.A(
+            href="https://www.jil.go.jp/kokunai/statistics/dbdata/wage/sub6.html",
+            target="_blank",
+            children='使用データ：賃金構造基本統計調査：都道府県別（一般労働者）'),
+             style={
+                'color': '#888888',
+                'textAlign': 'center',
+                'margin': '3% auto'
+             }),
+
+    html.Div(
+        html.A(
+            href="https://github.com/Kunihiro-ikd/dashboard",
+            target="_blank",
+            children='github'),
+             style={
+                'color': '#888888',
+                'textAlign': 'center',
+                'margin': '3% auto'
+             }),
 ])
 
-
+# - 
 @app.callback(
     Output('japanmap', 'figure'),
     [Input('selectplace', 'value')]

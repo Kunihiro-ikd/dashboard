@@ -1,8 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-
-# Create your views here.
 from django.http import HttpResponse
 from .models import Question, Choice
 from django.template import loader
@@ -16,33 +14,32 @@ from polls.forms import DateForm
 from plotly.offline import plot
 import plotly.graph_objects as go
 
-def index(request):
+def home(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    # ここに原因がありそう。チュートリアルのコードではエラーが出る。
-    # template = loader.get_template('polls/index.html')
-    template = loader.get_template('index.html')
+    template = loader.get_template('home.html')
     context = {
         'latest_question_list': latest_question_list,
     }
     return HttpResponse(template.render(context, request))
 
+def about(request):
+    template_name = "about.html"
+    return render(request, template_name)
+
+
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    # return render(request, 'polls/detail.html', {'question': question})
-    return render(request, 'detail.html', {'question': question})
+    return render(request, 'demo/detail.html', {'question': question})
 
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    # return render(request, 'polls/results.html', {'question': question})
-    return render(request, 'results.html', {'question': question})
-
+    return render(request, 'demo/results.html', {'question': question})
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
-        # Redisplay the question voting form.
         return render(request, 'polls/detail.html', {
             'question': question,
             'error_message': "You didn't select a choice.",
@@ -50,20 +47,10 @@ def vote(request, question_id):
     else:
         selected_choice.votes += 1
         selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
-# def line_charts():
-    # fig = go.Figure(
-    #     go.Scatter(x=[1, 2, 3], y=[3, 5, 2]), layout=go.Layout(width=400, height=400)
-    # )
-    # return fig.to_html(include_plotlyjs=False) 
-
-
 def demo(request):
-    template_name = "demo.html"
+    template_name = "demo/demo.html"
     start = request.GET.get('start')
     end = request.GET.get('end')
 
@@ -94,6 +81,7 @@ def demo(request):
 
 
 def yearly_avg_co2(request):
+    template_name = 'demo/demo.html'
     averages = CO2.objects.values('date__year').annotate(avg=Avg('average'))
     x = averages.values_list('date__year', flat=True)
     y = averages.values_list('avg', flat=True)
@@ -103,12 +91,12 @@ def yearly_avg_co2(request):
 
     chart = fig.to_html()
     context = {'chart': chart, 'form': DateForm()}
-    return render(request, 'demo.html', context)
+    return render(request, template_name, context)
 
 
 
 def japanese_salary(request):
-    template_name = "japanese_salary.html"
+    template_name = "demo/japanese_salary.html"
     start = request.GET.get('start')
     end = request.GET.get('end')
     co2 = CO2.objects.all()
@@ -144,13 +132,9 @@ def japanese_salary(request):
 
     return render(request, template_name, context)
 
-# 
-def django_plotly_dash(request):
-    context = {}
-    return render(request, 'django_plotly_dash.html',context)
 
 def demo_japanese_prefecture(request):
-    template_name = 'demo_japanese_prefecture.html'
+    template_name = 'demo/japanese_prefecture.html'
     context = {}
     return render(request, template_name, context)
 

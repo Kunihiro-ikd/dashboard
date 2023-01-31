@@ -1,29 +1,17 @@
-"""backend URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import include, path
 from polls import views
 from django.conf import settings
 from django.conf.urls.static import static
+# py ファイルを import することで html で py ファイルが利用可能になる
 from polls.dash_apps.finished_apps import testplot, simpleexample, japanese_prefecture, avg_system_man
 
-
 urlpatterns = [
+    # polls ディレクトリと紐付け
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
-    # なぜかdjango_plotly_dashのパスは必要 https://github.com/GibbsConsulting/django-plotly-dash/issues/117
+
+    # 理由は分からないが、 django_plotly_dash のパスは必要
+    # https://github.com/GibbsConsulting/django-plotly-dash/issues/117
     path('django_plotly_dash/', include('django_plotly_dash.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)

@@ -1,0 +1,15 @@
+{% extends "../base/_base.html" %} 
+
+  {% block content %}
+  
+
+  <form method="GET" action="{% url 'polls:japanese_salary' %}">
+    {{ form.as_p }}
+    <button>Submit </button>
+  </form>
+
+  {% load plotly_dash %}
+  {% plotly_app name="SimpleExample" ratio=0.4 %}
+  {% plotly_app name="testplot" ratio=0.4 %}
+
+{% endblock %}

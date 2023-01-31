@@ -6,8 +6,8 @@ bin-release/
 
 # Other files and folders
 .settings/
-# prefecture-stat/
-# django-plotly-dash/
+__pycache__
+
 # Executables
 *.swf
 *.air

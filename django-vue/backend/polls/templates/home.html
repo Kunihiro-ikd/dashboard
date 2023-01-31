@@ -1,0 +1,42 @@
+{% extends "./base/_base.html" %} 
+{% block content %}
+<div class="album py-5">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <!-- one block  -->
+      <div class="col">
+        <div class="card shadow-sm">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+          
+          <div class="card-body">
+            <p class="card-text">
+              <a href={% url 'polls:home' %} class="nav-link px-2 text-secondary">Home</a>
+              <a href={% url 'polls:dashboard-avg-system-man' %} class="nav-link px-2 text-secondary"> 【ダッシュボード】　都道府県別システムエンジニア（男性）の平均年収</a>
+            </p>
+            <p class="card-text"></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-muted">plotly, dash, pandas</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- one block  -->
+      <!-- one block  -->
+      <div class="col">
+      <div class="card shadow-sm">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+        <div class="card-body">
+          <p class="card-text">【作成中】オートエンコーダーを用いた画像変換ツールの作成。画像をゴッホのタッチに加工する</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted">dashboard</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- one block  -->
+    </div>
+  </div>
+</div>
+
+{% endblock %}

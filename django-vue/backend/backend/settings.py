@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # channels_redis, channnels
     'channels',
     'channels_redis',
+
 ]
 
 MIDDLEWARE = [
@@ -130,11 +131,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # collectstaticなどを行った際にファイルを設置するstaticフォルダの場所を記述（開発の際は必要ないのでコメントアウトしておく）
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # htmlファイルなどから読み込むstaticフォルダの場所を記述
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static/')
+    os.path.join(BASE_DIR, 'static')
 ]
 
 # Default primary key field type

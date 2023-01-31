@@ -1,0 +1,14 @@
+{% extends "../base/_base.html" %} 
+{% block content %}
+  
+
+  <form method="GET" action="{% url 'polls:demo' %}">
+    {{ form.as_p }}
+    dashboard_japanese_salary.html
+    <button>Submit </button>
+  </form>
+  
+  <div class="graph">{{plot|safe}}</div>
+  {{chart | safe}}
+  
+{% endblock %}

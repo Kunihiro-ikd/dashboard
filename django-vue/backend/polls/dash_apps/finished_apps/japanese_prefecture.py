@@ -36,7 +36,7 @@ app = DjangoDash(
 
 app.layout = html.Div([
     html.Div(
-        html.H1('都道府県データマップ システムエンジニアの年収（男）',
+        html.H1('都道府県データマップ',
                 style={
                     'textAlign': 'center',
                     'margin':'3% auto'
