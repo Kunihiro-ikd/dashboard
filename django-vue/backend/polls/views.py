@@ -148,3 +148,13 @@ def japanese_salary(request):
 def django_plotly_dash(request):
     context = {}
     return render(request, 'django_plotly_dash.html',context)
+
+def demo_japanese_prefecture(request):
+    template_name = 'demo_japanese_prefecture.html'
+    context = {}
+    return render(request, template_name, context)
+
+def avg_system_man(request):
+    template_name = 'avg_system_man.html'
+    context = {}
+    return render(request, template_name, context)

@@ -17,5 +17,8 @@ urlpatterns = [
     path('japanese_salary/', views.japanese_salary, name='japanese_salary'),
     # path('japanese_salary/', include('django_plotly_dash.urls')),
     path('bar/',  views.yearly_avg_co2, name='bar-test'),
+    path('demo_japanese_prefecture/', views.demo_japanese_prefecture, name="demo-prefecture"),
+    # システムエンジニア（男性）の年収
+    path('avg_system_man/', views.avg_system_man, name="dashboard-avg-system-man"),
     # 'bar= url のパス, views.関数, name=わかりやすい名前（パスを変えた時でもhtml 側で {% url 'name'%}を取ることができる）
 ]
