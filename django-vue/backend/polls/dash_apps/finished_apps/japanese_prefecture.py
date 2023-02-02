@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import numpy as np
 import pandas as pd
 import plotly.express as px
@@ -22,9 +20,6 @@ data_path = settings.BASE_DIR / 'backend' / 'data'
 df_all = pd.read_csv(data_path /'all_data.csv') # 統計で見る都道府県のすがた
 # csv の都道府県のセルのデータ名と、geojson の properties.nam_ja を対応づける。対応づけられていなかった場合、地図へ色の反映はされない。
 jsonfile = gpd.read_file(data_path / 'japan.geojson') # geodata
-
-
-# 選んだ項目をchoropleth_mapboxで描画
 
 df = df_all.dropna()
 dfjson = json.loads(jsonfile.to_json())
@@ -61,8 +56,6 @@ app.layout = html.Div([
                          'margin': '1% auto',
                          'textAlign':'center',
                      })),
-       
-    
     html.Div(
         dcc.Loading(children=dcc.Graph(id='japanmap',
                                        style={
@@ -92,11 +85,14 @@ app.layout = html.Div([
 @app.callback(Output('japanmap', 'figure'), [Input('selectplace', 'value')])
 def update_map(selected_value):
     selectdf = df[selected_value]
+    df_sort = df.sort_values(by=selected_value)
+    df_sort['順位'] = np.arange(47, 0, -1)
     fig = px.choropleth_mapbox(
         selectdf,
         geojson=dfjson,
         locations=df['都道府県'],
-        color=selectdf,
+        color=['順位'],
+        hover_data=['順位'],
         featureidkey='properties.nam_ja',
         color_continuous_scale="Viridis",
         mapbox_style="carto-positron",
@@ -117,7 +113,7 @@ def draw_graph(selected_value):
     fig = px.bar(df_sort,
                  x='都道府県',
                  y=selected_value,
-                 color=selected_value,
+                #  color=selected_value,
                  color_continuous_scale="Viridis",
                  hover_data=['順位'],
                  title=f'{selected_value}年度 平均年収')

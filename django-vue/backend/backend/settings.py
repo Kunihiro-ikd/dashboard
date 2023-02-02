@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-7r328!ia9v6upr2-elqau03gk69xs@j&wi@6!u&*u7bkmh-gt_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# 本番環境用の設定。全てのポートを許可
 ALLOWED_HOSTS=['*']
 
 
@@ -39,9 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # app
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
-    # channels_redis, channnels
+    # channels_redis,
     'channels',
     'channels_redis',
 
@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # plotly
+    # plotly の指定
     'django_plotly_dash.middleware.BaseMiddleware',
 ]
 
@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'db' / 'db.sqlite3',
     }
 }
 
