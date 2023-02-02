@@ -9,5 +9,7 @@ make dashboard data science
 
 - 日本地図の出力 geojson は下記を使用させていただいた。
     - https://github.com/kikeda1102/prefecture-stat
+- 年収として使ったデータは下記
+    - https://www.jil.go.jp/kokunai/statistics/dbdata/wage/sub6.html
 
 

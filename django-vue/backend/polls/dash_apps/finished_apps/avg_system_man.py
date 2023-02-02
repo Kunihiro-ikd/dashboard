@@ -137,25 +137,28 @@ app.layout = html.Div([
              }),
 ])
 
-# - 
+
 @app.callback(
     Output('japanmap', 'figure'),
     [Input('selectplace', 'value')]
 )
 def update_map(selected_value):
+    df_sort = df.sort_values(by=selected_value)
+    df_sort['順位'] = np.arange(47, 0, -1)
     selectdf = df[selected_value]
     fig = px.choropleth_mapbox(
         selectdf,
         geojson=dfjson,
         locations=df['都道府県'],
         color=selectdf,
+        # geojson
         featureidkey='properties.nam_ja',
         color_continuous_scale="Viridis",
         mapbox_style="carto-positron",
         zoom=3.6,
         center={"lat": 36,"lon": 138},
         opacity=0.7,
-        labels={"2015年": "2015年"}
+        labels={"2015年": "2015年"},
     )
 
     fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
