@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 from django.conf.urls import include
+from django.conf.urls.static import static
+from django.conf import settings
 
 app_name = "polls"
 urlpatterns = [
@@ -25,4 +27,4 @@ urlpatterns = [
     path('demo/demo_japanese_prefecture/', views.demo_japanese_prefecture, name="demo-prefecture"),
     ####  demo ################
     ###########################
-]
+]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

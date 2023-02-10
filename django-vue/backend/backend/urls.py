@@ -15,4 +15,4 @@ urlpatterns = [
     # 理由は分からないが、 django_plotly_dash のパスは必要
     # https://github.com/GibbsConsulting/django-plotly-dash/issues/117
     path('django_plotly_dash/', include('django_plotly_dash.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

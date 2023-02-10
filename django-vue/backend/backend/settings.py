@@ -29,7 +29,6 @@ DEBUG = True
 # 本番環境用の設定。全てのポートを許可
 ALLOWED_HOSTS=['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,6 +44,7 @@ INSTALLED_APPS = [
     # channels_redis,
     'channels',
     'channels_redis',
+    'django.forms',
 ]
 
 MIDDLEWARE = [
@@ -64,7 +64,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['cnn/templates', 'polls/templates','templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,16 +128,19 @@ USE_TZ = True
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+# 本番
+# MEDIA_ROOT = f'/var/www/{BASE_DIR.name}/media'
 
 # https://just-python.com/document/django/project-setting/static-media
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 # collectstaticなどを行った際にファイルを設置するstaticフォルダの場所を記述（開発の際は必要ないのでコメントアウトしておく）
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # htmlファイルなどから読み込むstaticフォルダの場所を記述
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static'),
+    '/var/www/static/',
 ]
 
 # Default primary key field type
@@ -175,3 +178,5 @@ PLOTLY_COMPONENTS = [
 ]
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'

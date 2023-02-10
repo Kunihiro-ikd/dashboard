@@ -6,5 +6,7 @@ from django.conf import settings
 
 app_name = "cnn"
 urlpatterns = [
-    path('img_upload', views.upload_img, name='img_upload'),
+    path('img_upload', views.img_upload, name='img_upload'),
+    path('nueral_style_transfer', views.nueral_style_transfer, name='nueral_style_transfer'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
