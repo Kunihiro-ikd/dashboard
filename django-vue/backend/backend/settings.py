@@ -34,6 +34,7 @@ ALLOWED_HOSTS=['*']
 
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
+    'cnn.apps.CnnConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,7 +45,6 @@ INSTALLED_APPS = [
     # channels_redis,
     'channels',
     'channels_redis',
-
 ]
 
 MIDDLEWARE = [
@@ -126,6 +126,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # https://just-python.com/document/django/project-setting/static-media
 STATIC_URL = '/static/'
