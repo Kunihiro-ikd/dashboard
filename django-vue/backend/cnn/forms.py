@@ -19,6 +19,7 @@ class UploadForm(forms.ModelForm):
             # 'file': FileInputWithPreview(include_preview=False)
         }
 
+
 class DocumentForm(forms.ModelForm):
     class Meta:
         model = Document
