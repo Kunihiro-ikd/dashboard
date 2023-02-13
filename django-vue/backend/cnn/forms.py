@@ -12,7 +12,6 @@ class UploadForm(forms.ModelForm):
     class Meta:
         model = UploadImage
         fields = ['title', 'image']
-
         widgets = {
             'file': FileInputWithPreview,
             # 次のようにすると、プレビューエレメントがウィジェットに含まれない。つまりプレビューエレメントを自分で好きな場所にかける
@@ -23,7 +22,10 @@ class UploadForm(forms.ModelForm):
 class DocumentForm(forms.ModelForm):
     class Meta:
         model = Document
-        fields = ('description', 'document', )
+        fields = (
+            # 'description',
+            'document',
+            )
 
 
 
